@@ -15,7 +15,9 @@ the [defaults file][defaults].
 
 ## Dependencies
 
-None
+- [galaxyproject.galaxy](https://github.com/galaxyproject/ansible-galaxy)
+
+Many variables from that role are set. It is assumed you will use that in your playbook as well.
 
 ## Example Playbook
 
