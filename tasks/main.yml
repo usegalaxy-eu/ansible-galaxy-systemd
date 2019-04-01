@@ -1,4 +1,4 @@
-
+---
 - name: Deploy Zergpool unit
   template:
     src: galaxy-zergpool.service.j2

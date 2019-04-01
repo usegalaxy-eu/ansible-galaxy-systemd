@@ -11,7 +11,7 @@ Group={{ galaxy_group }}
 WorkingDirectory={{ galaxy_server_dir }}
 TimeoutStartSec=10
 ExecStart={{ galaxy_venv_dir }}/bin/uwsgi --master --zerg-pool {{ galaxy_zergpool_listen_path }}:{{ galaxy_zergpool_listen_addr }}
-Environment=HOME={{ galaxy_mutable_data_dir }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
+Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 MemoryLimit={{ galaxy_systemd_memory_limit_zp }}G
 Restart=always
 MemoryAccounting=yes
