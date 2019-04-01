@@ -1,0 +1,45 @@
+
+- name: Deploy Zergpool unit
+  template:
+    src: galaxy-zergpool.service.j2
+    dest: /etc/systemd/system/galaxy-zergpool.service
+
+- name: Deploy Zergling units
+  template:
+    src: galaxy-zergling@.service.j2
+    dest: /etc/systemd/system/galaxy-zergling@.service
+
+- name: Deploy handler units
+  template:
+    src: galaxy-handler@.service.j2
+    dest: /etc/systemd/system/galaxy-handler@.service
+
+# TODO: In case of changes? Not sure this is necessary.
+#- name: just force systemd to reread configs (2.4 and above)
+  #systemd:
+    #daemon_reload: yes
+
+- name: Enable zergpool and ensure it is running
+  systemd:
+    name: galaxy-zergpool.service
+    enabled: yes
+    started: yes
+
+- name: Enable relevant zerglings
+  systemd:
+    name: "galaxy-zergling@{{ item }}.service"
+    enabled: yes
+  loop: "{{ range(0, galaxy_systemd.zerglings.count) | list }}"
+
+- name: Start relevant zerglings
+  systemd:
+    name: "galaxy-zergling@{{ item }}.service"
+    started: yes
+  loop: "{{ range(0, galaxy_systemd.zerglings.started) | list }}"
+
+- name: Enable relevant handlers
+  systemd:
+    name: "galaxy-handler@{{ item }}.service"
+    enabled: yes
+    started: yes
+  loop: "{{ range(0, galaxy_systemd.handlers.count) | list }}"
