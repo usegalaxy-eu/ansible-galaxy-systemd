@@ -1,5 +1,4 @@
-galaxy_systemd_zergling_count: 3
-galaxy_systemd_zergling_started: 2
+galaxy_systemd_zerglings: 2
 galaxy_systemd_handlers: 12
 
 # In GB

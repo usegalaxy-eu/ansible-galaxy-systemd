@@ -29,13 +29,8 @@
   systemd:
     name: "galaxy-zergling@{{ item }}.service"
     enabled: yes
-  loop: "{{ range(0, galaxy_systemd_zergling_count) | list }}"
-
-- name: Start relevant zerglings
-  systemd:
-    name: "galaxy-zergling@{{ item }}.service"
     state: started
-  loop: "{{ range(0, galaxy_systemd_zergling_started) | list }}"
+  loop: "{{ range(0, galaxy_systemd_zerglings) | list }}"
 
 - name: Enable relevant handlers
   systemd:
