@@ -1,16 +1,25 @@
 ---
 - name: Deploy Zergpool unit
   template:
+    owner: root
+    group: root
+    mode: 0644
     src: galaxy-zergpool.service.j2
     dest: /etc/systemd/system/galaxy-zergpool.service
 
 - name: Deploy Zergling units
   template:
+    owner: root
+    group: root
+    mode: 0644
     src: galaxy-zergling@.service.j2
     dest: /etc/systemd/system/galaxy-zergling@.service
 
 - name: Deploy handler units
   template:
+    owner: root
+    group: root
+    mode: 0644
     src: galaxy-handler@.service.j2
     dest: /etc/systemd/system/galaxy-handler@.service
 
