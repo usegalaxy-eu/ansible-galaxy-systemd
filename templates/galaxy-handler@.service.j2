@@ -14,7 +14,10 @@ ExecStart={{ galaxy_venv_dir }}/bin/python ./scripts/galaxy-main -c {{ galaxy_co
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin DOCUTILSCONFIG='' PYTHONPATH={{ galaxy_dynamic_job_rules_dir }}
 MemoryLimit={{ galaxy_systemd_memory_limit }}G
 Restart=always
+
 MemoryAccounting=yes
+CPUAccounting=yes
+BlockIOAccounting=yes
 
 [Install]
 WantedBy=multi-user.target

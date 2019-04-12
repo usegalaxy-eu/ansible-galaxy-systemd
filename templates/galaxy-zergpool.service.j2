@@ -14,7 +14,10 @@ ExecStart={{ galaxy_venv_dir }}/bin/uwsgi --master --zerg-pool {{ galaxy_zergpoo
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 MemoryLimit={{ galaxy_systemd_memory_limit_zp }}G
 Restart=always
+
 MemoryAccounting=yes
+CPUAccounting=yes
+BlockIOAccounting=yes
 
 [Install]
 WantedBy=multi-user.target
