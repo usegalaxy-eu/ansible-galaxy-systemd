@@ -12,3 +12,6 @@ galaxy_zergpool_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_zergpool_s
 
 # TODO: support yml?
 galaxy_uwsgi_config_file_basename: uwsgi.ini
+
+galaxy_systemd_zergling_env: ""
+galaxy_systemd_handler_env: ""
