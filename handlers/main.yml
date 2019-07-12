@@ -1,4 +1,4 @@
 ---
-- name: Daemon Reload
+- name: galaxy handler daemon reload
   systemd:
     daemon_reload: yes
