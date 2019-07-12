@@ -1,54 +1,7 @@
 ---
-- name: Deploy Zergpool unit
-  template:
-    owner: root
-    group: root
-    mode: 0644
-    src: galaxy-zergpool.service.j2
-    dest: /etc/systemd/system/galaxy-zergpool.service
-  when: galaxy_zergpool
-  register: galaxy handler daemon reload
 
-- name: Deploy Zergling units
-  template:
-    owner: root
-    group: root
-    mode: 0644
-    src: galaxy-zergling@.service.j2
-    dest: /etc/systemd/system/galaxy-zergling@.service
-  register: galaxy handler daemon reload
+- include_tasks: zerg.yml
+  when: galaxy_systemd_mode == "zerg"
 
-- name: Deploy handler units
-  template:
-    owner: root
-    group: root
-    mode: 0644
-    src: galaxy-handler@.service.j2
-    dest: /etc/systemd/system/galaxy-handler@.service
-  register: galaxy handler daemon reload
-
-# TODO: In case of changes? Not sure this is necessary.
-#- name: just force systemd to reread configs (2.4 and above)
-  #systemd:
-    #daemon_reload: yes
-
-- name: Enable zergpool and ensure it is running
-  systemd:
-    name: galaxy-zergpool.service
-    enabled: yes
-    state: started
-  when: galaxy_zergpool
-
-- name: Enable relevant zerglings
-  systemd:
-    name: "galaxy-zergling@{{ item }}.service"
-    enabled: yes
-    state: started
-  loop: "{{ range(0, galaxy_systemd_zerglings) | list }}"
-
-- name: Enable relevant handlers
-  systemd:
-    name: "galaxy-handler@{{ item }}.service"
-    enabled: yes
-    state: started
-  loop: "{{ range(0, galaxy_systemd_handlers) | list }}"
+- include_tasks: mule.yml
+  when: galaxy_systemd_mode == "mule"
