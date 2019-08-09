@@ -26,6 +26,15 @@
     dest: /etc/systemd/system/galaxy-handler@.service
   register: galaxy handler daemon reload
 
+- name: Deploy workflow units
+  template:
+    owner: root
+    group: root
+    mode: 0644
+    src: galaxy-workflow-scheduler@.service.j2
+    dest: /etc/systemd/system/galaxy-workflow-scheduler@.service
+  register: galaxy workflow scheduler daemon reload
+
 # TODO: In case of changes? Not sure this is necessary.
 #- name: just force systemd to reread configs (2.4 and above)
   #systemd:
@@ -51,3 +60,10 @@
     enabled: yes
     state: started
   loop: "{{ range(0, galaxy_systemd_handlers) | list }}"
+
+- name: Enable relevant workflows
+  systemd:
+    name: "galaxy-workflow-scheduler@{{ item }}.service"
+    enabled: yes
+    state: started
+  loop: "{{ range(0, galaxy_systemd_workflow_schedulers) | list }}"
