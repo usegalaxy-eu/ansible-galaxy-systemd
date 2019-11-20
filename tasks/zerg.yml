@@ -6,7 +6,7 @@
     src: galaxy-zergpool.service.j2
     dest: /etc/systemd/system/galaxy-zergpool.service
   when: galaxy_zergpool
-  register: galaxy handler daemon reload
+  notify: galaxy handler daemon reload
 
 - name: Deploy Zergling units
   template:
@@ -15,7 +15,7 @@
     mode: 0644
     src: galaxy-zergling@.service.j2
     dest: /etc/systemd/system/galaxy-zergling@.service
-  register: galaxy handler daemon reload
+  notify: galaxy handler daemon reload
 
 - name: Deploy handler units
   template:
@@ -24,7 +24,7 @@
     mode: 0644
     src: galaxy-handler@.service.j2
     dest: /etc/systemd/system/galaxy-handler@.service
-  register: galaxy handler daemon reload
+  notify: galaxy handler daemon reload
 
 - name: Deploy workflow units
   template:
@@ -33,7 +33,7 @@
     mode: 0644
     src: galaxy-workflow-scheduler@.service.j2
     dest: /etc/systemd/system/galaxy-workflow-scheduler@.service
-  register: galaxy workflow scheduler daemon reload
+  notify: galaxy workflow scheduler daemon reload
 
 # TODO: In case of changes? Not sure this is necessary.
 #- name: just force systemd to reread configs (2.4 and above)
