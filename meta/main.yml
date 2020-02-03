@@ -5,6 +5,7 @@ galaxy_info:
   company: Galaxy Europe
   license: GPL-3.0
   min_ansible_version: 2.5
+  role_name: galaxy-systemd
   platforms:
   - name: EL
     versions:
