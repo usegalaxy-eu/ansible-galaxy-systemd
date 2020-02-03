@@ -10,6 +10,7 @@ galaxy_systemd_workflow_schedulers: 0
 
 # In GB
 galaxy_systemd_memory_limit: 16
+galaxy_systemd_memory_limit_reports: 5
 galaxy_systemd_memory_limit_handler: 5
 galaxy_systemd_memory_limit_workflow: 5
 galaxy_systemd_memory_limit_zp: 8
@@ -20,3 +21,5 @@ galaxy_zergpool_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_zergpool_s
 
 galaxy_systemd_zergling_env: ""
 galaxy_systemd_handler_env: ""
+
+galaxy_reports_path: "{{ galaxy_config_dir  }}/reports.yml"
