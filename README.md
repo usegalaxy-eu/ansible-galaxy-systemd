@@ -8,8 +8,7 @@ Sets up handlers and zerglings and a zergpool. We should probably make that conf
 
 ## Role Variables
 
-Not all variables are listed or explained in detail. For additional information about less commonly used variables, see
-the [defaults file][defaults].
+I don't feel like syncing the readme with my default file every time a variable gets added. Just [go there][defaults].
 
 [defaults]: defaults/main.yml
 
