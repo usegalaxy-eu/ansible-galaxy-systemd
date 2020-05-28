@@ -10,7 +10,7 @@ User={{ galaxy_user.name }}
 Group={{ __galaxy_user_group }}
 WorkingDirectory={{ galaxy_server_dir }}
 TimeoutStartSec=10
-ExecStart={{ galaxy_venv_dir }}/bin/uwsgi --master --zerg-pool {{ galaxy_zergpool_listen_path }}:{{ galaxy_zergpool_listen_addr }}
+ExecStart={{ galaxy_venv_dir }}/bin/uwsgi --master --zerg-pool {{ galaxy_zergpool_listen_path }}:{{ galaxy_zergpool_listen_addr }} --listen 200
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 MemoryLimit={{ galaxy_systemd_memory_limit_zp }}G
 Restart=always
