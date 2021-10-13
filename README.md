@@ -43,4 +43,4 @@ GPLv3
 This role was written and contributed to by the following people:
 
 - [Ott Oopkaup](https://github.com/ooobik)
-- [Helena Rasche](https://github.com/erasche)
+- [Helena Rasche](https://github.com/hexylena)
