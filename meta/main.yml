@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Galaxy Europe
-  description: Manage a Galaxy server with systemd.
+  description: Manage Galaxy server(s) with systemd.
   company: Galaxy Europe
   license: GPL-3.0
   min_ansible_version: 2.5

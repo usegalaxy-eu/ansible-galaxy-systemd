@@ -1,6 +1,9 @@
 # Which mode to run galaxy's web handlers in, there are only two options: mule or zerg (zerglings + webless handlers)
 galaxy_systemd_mode: "zerg"
 
+#required to be changed when multiple galaxy instances run on the same server
+galaxy_systemd_unit_name: "galaxy"
+
 # Mule Options
 galaxy_systemd_memory_limit_mule: 32
 
