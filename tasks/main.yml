@@ -5,3 +5,6 @@
 
 - include_tasks: mule.yml
   when: galaxy_systemd_mode == "mule"
+
+- include_tasks: reports.yml
+  when: galaxy_systemd_reports

@@ -6,7 +6,7 @@
     src: galaxy.service.j2
     dest: /etc/systemd/system/{{ galaxy_systemd_unit_name }}.service
   notify:
-    - galaxy handler daemon reload
+    - daemon reload
     - galaxy mule start
 
 - name: Enable Galaxy Unit
