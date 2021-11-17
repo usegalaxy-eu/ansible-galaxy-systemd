@@ -1,5 +1,5 @@
 [Unit]
-Description=Galaxy Workflow Scheduler for {{galaxy_systemd_sub_dest}}
+Description=Galaxy Workflow Scheduler for {% if galaxy_instance_codename %} for {{ galaxy_instance_codename | default(galaxy_systemd_unit_name) }}{% endif %}
 After=network.target
 After=time-sync.target
 

@@ -1,7 +1,7 @@
 galaxy_systemd_mode: "zerg" # alternatively "mule"
 
 #required to be changed when multiple galaxy instances run on the same server
-galaxy_systemd_sub_dest: "main"
+galaxy_systemd_unit_name: "galaxy"
 
 # Mule Options
 galaxy_systemd_memory_limit_mule: 32
