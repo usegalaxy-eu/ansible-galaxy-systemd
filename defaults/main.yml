@@ -1,5 +1,5 @@
 ---
-# Which mode to run galaxy's web handlers in, there are only two options: mule or zerg (zerglings + webless handlers)
+# Which mode to run galaxy's web handlers in, there are three options: mule, zerg or gunicorn (zerglings/gunicorn + webless handlers)
 galaxy_systemd_mode: "zerg"
 
 galaxy_systemd_handlers: 12
