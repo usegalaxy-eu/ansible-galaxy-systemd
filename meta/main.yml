@@ -5,46 +5,46 @@ galaxy_info:
   company: Galaxy Europe
   license: GPL-3.0
   min_ansible_version: 2.5
-  role_name: galaxy-systemd
+  role_name: galaxy_systemd
   platforms:
-  - name: EL
-    versions:
-    - all
-  - name: GenericUNIX
-    versions:
-    - all
-    - any
-  - name: Fedora
-    versions:
-    - all
-  - name: opensuse
-    versions:
-    - all
-  - name: Amazon
-    versions:
-    - all
-  - name: GenericBSD
-    versions:
-    - all
-    - any
-  - name: FreeBSD
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
-  - name: SLES
-    versions:
-    - all
-  - name: GenericLinux
-    versions:
-    - all
-    - any
-  - name: Debian
-    versions:
-    - all
+    - name: EL
+      versions:
+        - all
+    - name: GenericUNIX
+      versions:
+        - all
+        - any
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: Amazon
+      versions:
+        - all
+    - name: GenericBSD
+      versions:
+        - all
+        - any
+    - name: FreeBSD
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: GenericLinux
+      versions:
+        - all
+        - any
+    - name: Debian
+      versions:
+        - all
   galaxy_tags:
-  - system
-  - web
+    - system
+    - web
 dependencies: []
-allow_duplicates: yes
+allow_duplicates: true

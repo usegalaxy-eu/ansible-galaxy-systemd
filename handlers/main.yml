@@ -1,9 +1,9 @@
 ---
 - name: daemon reload
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
 
 - name: galaxy mule start
   systemd:
-      name: galaxy.service
-      state: started
+    name: galaxy.service
+    state: started
