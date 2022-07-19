@@ -29,7 +29,7 @@
 
 - name: Enable Gunicorn
   systemd:
-    name: "galaxy-gunicorn@.service"
+    name: "galaxy-gunicorn.service"
     enabled: true
     state: started
 
