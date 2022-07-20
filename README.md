@@ -1,6 +1,8 @@
 # ansible-galaxy-systemd
 
-Sets up handlers and zerglings and a zergpool. We should probably make that configurable for people who want other setups?.
+Sets up Galaxy server processes responsible for:
+ * servicing web requests for the UI/API
+ * setting up, starting, monitoring and submitting jobs to a cluster (if configured)
 
 ## Requirements
 

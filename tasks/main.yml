@@ -1,5 +1,8 @@
 ---
 
+- include_tasks: celery.yml
+  when: galaxy_systemd_celery
+
 - include_tasks: gunicorn.yml
   when: galaxy_systemd_mode == "gunicorn"
 
