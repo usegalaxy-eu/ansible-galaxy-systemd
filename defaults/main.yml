@@ -20,6 +20,9 @@ galaxy_systemd_gunicorn_socket_name: gunicorn.sock
 galaxy_systemd_gunicorn_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_systemd_gunicorn_socket_name }}"
 # Any extra env vars you wish to set for Gunicorn
 galaxy_systemd_gunicorn_env: ""
+# uncomment this if yuo want to disable the preload option
+# galaxy_systemd_gunicorn_preload: ''
+galaxy_systemd_gunicorn_preload_default: '--preload'
 
 ### Mule Options
 galaxy_systemd_memory_limit_mule: 32
