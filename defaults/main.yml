@@ -7,6 +7,7 @@ galaxy_systemd_workflow_schedulers: 0
 
 # Maximum memory limits (in GB) are set for every process in their systemd unit file, and applied through cgroups.
 galaxy_systemd_memory_limit: 16
+galaxy_systemd_memory_limit_celery: 5
 galaxy_systemd_memory_limit_reports: 5
 galaxy_systemd_memory_limit_handler: 5
 galaxy_systemd_memory_limit_workflow: 5
