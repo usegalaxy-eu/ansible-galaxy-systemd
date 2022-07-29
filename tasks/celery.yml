@@ -4,8 +4,8 @@
     owner: root
     group: root
     mode: 0644
-    src: galaxy-celery.service.j2
-    dest: /etc/systemd/system/galaxy-celery.service
+    src: galaxy-celery@.service.j2
+    dest: /etc/systemd/system/galaxy-celery@.service
   notify: daemon reload
 
 - name: Deploy Celery-beat units
@@ -19,9 +19,10 @@
 
 - name: Enable Celery
   systemd:
-    name: "galaxy-celery.service"
+    name: "galaxy-celery@{{ item }}.service"
     enabled: true
     state: started
+  loop: "{{ range(0, galaxy_systemd_celery_workers) | list }}"
 
 - name: Enable Celery-beat
   systemd:

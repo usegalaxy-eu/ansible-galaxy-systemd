@@ -56,6 +56,8 @@ galaxy_reports_path: "{{ galaxy_config_dir  }}/reports.yml"
 ### Celery
 galaxy_systemd_celery: false
 galaxy_systemd_celery_pool: threads
+galaxy_systemd_celery_workers: 2
+galaxy_systemd_celery_concurrency: 2
 galaxy_systemd_celery_log_level: DEBUG
 galaxy_systemd_celery_env: ""
 galaxy_systemd_celery_beat_schedule_path: "{{ galaxy_mutable_data_dir }}/celery-beat-schedule"
