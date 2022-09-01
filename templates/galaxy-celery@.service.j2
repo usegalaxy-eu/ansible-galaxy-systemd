@@ -8,10 +8,10 @@ UMask=022
 Type=simple
 User={{ galaxy_user.name }}
 Group={{ __galaxy_user_group }}
-WorkingDirectory={{ galaxy_server_dir }}
+WorkingDirectory={{ galaxy_root }}
 TimeoutStartSec=10
 ExecStart={{ galaxy_venv_dir }}/bin/celery --app galaxy.celery worker --concurrency {{ galaxy_systemd_celery_concurrency }} -n worker%I.%H --loglevel {{ galaxy_systemd_celery_log_level }} --pool {{ galaxy_systemd_celery_pool }} --queues celery,galaxy.internal,galaxy.external
-Environment=PYTHONPATH={{ galaxy_server_dir }}/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_celery_env }}
+Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_celery_env }}
 MemoryLimit={{ galaxy_systemd_memory_limit_celery }}G
 Restart=always
 
