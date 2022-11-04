@@ -14,18 +14,19 @@ galaxy_systemd_memory_limit_workflow: 5
 galaxy_systemd_memory_limit_zp: 8
 
 ### Gunicorn Options
+galaxy_systemd_gunicorns: 2
 galaxy_systemd_gunicorn_workers: 2
 galaxy_systemd_gunicorn_timeout: 300
 # Where the socket for the zergling will be placed
-galaxy_systemd_gunicorn_socket_name: gunicorn.sock
+# the socket name needs to be followed by
+galaxy_systemd_gunicorn_socket_name: gunicorn
 galaxy_systemd_gunicorn_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_systemd_gunicorn_socket_name }}"
-galaxy_systemd_gunicorn_listen_path_2: "{{ galaxy_mutable_data_dir }}/gunicorn2.sock"
 
 # Any extra env vars you wish to set for Gunicorn
 galaxy_systemd_gunicorn_env: ""
 # uncomment this if yuo want to disable the preload option
 # galaxy_systemd_gunicorn_preload: ''
-galaxy_systemd_gunicorn_preload_default: '--preload'
+galaxy_systemd_gunicorn_preload_default: "--preload"
 
 ### Mule Options
 galaxy_systemd_memory_limit_mule: 32

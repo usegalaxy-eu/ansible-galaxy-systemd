@@ -1,12 +1,19 @@
 # ansible-galaxy-systemd
 
 Sets up Galaxy server processes responsible for:
- * servicing web requests for the UI/API
- * setting up, starting, monitoring and submitting jobs to a cluster (if configured)
+
+- servicing web requests for the UI/API
+- setting up, starting, monitoring and submitting jobs to a cluster (if configured)
 
 ## Requirements
 
 - systemd
+
+## Major Changes
+
+- Gunicorn is now scalable: just define a number in `galaxy_systemd_gunicorns` and like the handlers, that many of them will spawn.
+- The Socket name should now be without the '.sock' prefix, as the sockets are automatically created for each Gunicorn process.
+- Be aware that you may have to rename the sockets in your NGINX config.
 
 ## Role Variables
 
@@ -22,7 +29,7 @@ Many variables from that role are set. It is assumed you will use that in your p
 
 ## Example Playbook
 
-### Basic ###
+### Basic
 
 Install Galaxy on your local system with all the default options:
 
@@ -32,8 +39,8 @@ Install Galaxy on your local system with all the default options:
     galaxy_server_dir: /srv/galaxy
   connection: local
   roles:
-     - galaxyproject.galaxy
-     - usegalaxy-eu.galaxy-systemd
+    - galaxyproject.galaxy
+    - usegalaxy-eu.galaxy-systemd
 ```
 
 ## License
