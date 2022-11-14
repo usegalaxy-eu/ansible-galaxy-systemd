@@ -5,6 +5,7 @@ galaxy_systemd_mode: "zerg"
 galaxy_systemd_handler_prefix: "handler_{{  ansible_hostname.split('.')[0] | lower }}"
 galaxy_systemd_handlers: 12
 galaxy_systemd_workflow_schedulers: 0
+galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{  ansible_hostname.split('.')[0] | lower }}"
 
 # Maximum memory limits (in GB) are set for every process in their systemd unit file, and applied through cgroups.
 galaxy_systemd_memory_limit: 16
