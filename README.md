@@ -11,6 +11,7 @@ Sets up Galaxy server processes responsible for:
 
 ## Major Changes
 
+- Workflow Schedulers now have a scalable prefix, too. `galaxy_systemd_workflow_scheduler_prefix` By default the first part of `ansible_hostname`
 - Handlers have a `galaxy_systemd_handler_prefix` var now, which should be used to give them a unique key together with their process number. For example by using the hostname as prefix, like in the [deafults][defaults]. This makes an **update of the job_conf necessary**.
 - Gunicorn is now scalable: just define a number in `galaxy_systemd_gunicorns` and like the handlers, that many of them will spawn.
 - The Socket name should now be without the '.sock' prefix, as the sockets are automatically created for each Gunicorn process.
