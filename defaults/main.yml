@@ -11,6 +11,7 @@ galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{  ansible_hostna
 galaxy_systemd_memory_limit: 16
 galaxy_systemd_memory_limit_celery_internal: 4
 galaxy_systemd_memory_limit_celery_external: 4
+galaxy_systemd_memory_limit_celery_beat: 2
 galaxy_systemd_memory_limit_reports: 5
 galaxy_systemd_memory_limit_handler: 5
 galaxy_systemd_memory_limit_workflow: 5
@@ -78,3 +79,4 @@ galaxy_systemd_celery_external_max_tasks: 2
 galaxy_systemd_celery_external_log_level: DEBUG
 galaxy_systemd_celery_env: ""
 galaxy_systemd_celery_beat_schedule_path: "{{ galaxy_mutable_data_dir }}/celery-beat-schedule"
+galaxy_systemd_celery_beat_log_level: DEBUG
