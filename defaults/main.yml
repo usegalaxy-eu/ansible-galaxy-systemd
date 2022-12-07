@@ -62,7 +62,7 @@ galaxy_reports_path: "{{ galaxy_config_dir  }}/reports.yml"
 
 ### Celery
 # The sum of autoscale max * workers for internal and external should not exceed your CPUs
-galaxy_systemd_celery_internal: false
+galaxy_systemd_celery: false
 galaxy_systemd_celery_internal_pool: prefork
 galaxy_systemd_celery_internal_workers: 2
 galaxy_systemd_celery_internal_concurrency: 4
@@ -70,7 +70,6 @@ galaxy_systemd_celery_internal_autoscale: "2,8"
 galaxy_systemd_celery_internal_max_tasks: 4
 galaxy_systemd_celery_internal_log_level: DEBUG
 # Worker for external queue
-galaxy_systemd_celery_external: false
 galaxy_systemd_celery_external_pool: threads
 galaxy_systemd_celery_external_workers: 8
 galaxy_systemd_celery_external_concurrency: 2
