@@ -73,7 +73,7 @@ galaxy_systemd_celery_internal_log_level: DEBUG
 galaxy_systemd_celery_external: false
 galaxy_systemd_celery_external_pool: threads
 galaxy_systemd_celery_external_workers: 8
-galaxy_systemd_celery_external_concurrency: 4
+galaxy_systemd_celery_external_concurrency: 2
 galaxy_systemd_celery_external_autoscale: "2,8"
 galaxy_systemd_celery_external_max_tasks: 2
 galaxy_systemd_celery_external_log_level: DEBUG
