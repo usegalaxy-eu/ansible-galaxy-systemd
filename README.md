@@ -11,6 +11,18 @@ Sets up Galaxy server processes responsible for:
 
 ## Major Changes
 
+### :warning: Version 2.0.0
+The Celery workers are ow split into two unit-files:
+ - external queue, usually used with threads, but could be probably also used with the pools `gevent` or `evenlet` (not tested). Since `autoscale` is not supported for thread pools,  `concurrency` is used as before
+ - internal queue, supports `prefork`, so it can `autoscale`
+ - deafult concurrency was reduced, keep that in mind
+ - max tasks per child were reduced to avoid jammed worker processes and tasks that are started but get never finished (for so far unknown reason)
+
+Be aware that there are now new variable names for these two different nit files and also for the beat file, to keep everything separated.
+
+The restart behavior also changed, to make sure that no old celery workers are running, so the celery workers are getting restarted on each deployment.
+
+
 :warning: **You need to reassign jobs to the newly named handlers/workflow schedulers, for example with:**
 
 ```sh
@@ -68,3 +80,4 @@ This role was written and contributed to by the following people:
 
 - [Ott Oopkaup](https://github.com/ooobik)
 - [Helena Rasche](https://github.com/hexylena)
+- [Mira Kuntz](https://github.com/mira-miracoli)

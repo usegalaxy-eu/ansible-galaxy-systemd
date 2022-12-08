@@ -10,7 +10,7 @@ User={{ galaxy_user.name }}
 Group={{ __galaxy_user_group }}
 WorkingDirectory={{ galaxy_root }}
 TimeoutStartSec=10
-ExecStart={{ galaxy_venv_dir }}/bin/celery --app galaxy.celery beat --loglevel {{ galaxy_systemd_celery_log_level }} --schedule {{ galaxy_systemd_celery_beat_schedule_path }}
+ExecStart={{ galaxy_venv_dir }}/bin/celery --app galaxy.celery beat --loglevel {{ galaxy_systemd_celery_beat_log_level }} --schedule {{ galaxy_systemd_celery_beat_schedule_path }}
 Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_celery_env }}
 MemoryLimit={{ galaxy_systemd_memory_limit_celery }}G
 Restart=always
