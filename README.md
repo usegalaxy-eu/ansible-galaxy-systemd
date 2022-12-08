@@ -12,7 +12,7 @@ Sets up Galaxy server processes responsible for:
 ## Major Changes
 
 ### :warning: Version 2.0.0
-The Celery workers are ow split into two unit-files:
+The Celery workers are now split into two unit-files:
  - external queue, usually used with threads, but could be probably also used with the pools `gevent` or `evenlet` (not tested). Since `autoscale` is not supported for thread pools,  `concurrency` is used as before
  - internal queue, supports `prefork`, so it can `autoscale`
  - deafult concurrency was reduced, keep that in mind
