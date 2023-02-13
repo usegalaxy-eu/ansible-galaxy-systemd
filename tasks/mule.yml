@@ -1,4 +1,3 @@
----
 - name: Deploy Galaxy Unit
   template:
     owner: root

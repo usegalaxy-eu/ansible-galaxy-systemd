@@ -80,6 +80,3 @@ galaxy_systemd_celery_external_log_level: DEBUG
 galaxy_systemd_celery_env: ""
 galaxy_systemd_celery_beat_schedule_path: "{{ galaxy_mutable_data_dir }}/celery-beat-schedule"
 galaxy_systemd_celery_beat_log_level: DEBUG
-
-galaxy_systemd_watchdog: false
-galaxy_systemd_watchdog_patterns: "*.py,*.yml,*.yaml,*.xml"

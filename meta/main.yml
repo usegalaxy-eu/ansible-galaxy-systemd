@@ -6,7 +6,6 @@ galaxy_info:
   license: GPL-3.0
   min_ansible_version: 2.5
   role_name: galaxy_systemd
-  namespace: usegalaxy_eu
   platforms:
     - name: EL
       versions:
