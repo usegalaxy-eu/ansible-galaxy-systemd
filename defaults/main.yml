@@ -2,10 +2,10 @@
 # Which mode to run galaxy's web handlers in, there are three options: mule, zerg or gunicorn (zerglings/gunicorn + webless handlers)
 galaxy_systemd_mode: "zerg"
 
-galaxy_systemd_handler_prefix: "handler_{{  ansible_hostname.split('.')[0] | lower }}"
+galaxy_systemd_handler_prefix: "handler_{{ ansible_hostname.split('.')[0] | lower }}"
 galaxy_systemd_handlers: 12
 galaxy_systemd_workflow_schedulers: 0
-galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{  ansible_hostname.split('.')[0] | lower }}"
+galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{ ansible_hostname.split('.')[0] | lower }}"
 
 # Maximum memory limits (in GB) are set for every process in their systemd unit file, and applied through cgroups.
 galaxy_systemd_memory_limit: 16
@@ -48,18 +48,20 @@ galaxy_zergpool_socket_name: zergpool.sock
 # Where the socket for the zergling will be placed
 galaxy_zergpool_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_zergpool_socket_name }}"
 
-galaxy_systemd_zergling_uwsgi_config_style: "{{ galaxy_config_style | default('ini')}}"
+galaxy_systemd_zergling_uwsgi_config_style: "{{ galaxy_config_style | default('ini') }}"
 galaxy_systemd_zergling_uwsgi_config_file: "{{ galaxy_config_file }}"
 
 # Any extra env vars you wish to set for Zerglings OR Mules (anything that runs web)
 galaxy_systemd_zergling_env: ""
 # Any extra env vars to pass to the handlers
 galaxy_systemd_handler_env: ""
+# Any extra env vars to pass to the workflow schedulers
+galaxy_systemd_workflow_scheduler_env: ""
 
 ### Reports
 # Do you want to deploy reports too? No, of course not.
 galaxy_systemd_reports: false
-galaxy_reports_path: "{{ galaxy_config_dir  }}/reports.yml"
+galaxy_reports_path: "{{ galaxy_config_dir }}/reports.yml"
 
 ### Celery
 # The sum of autoscale max * workers for internal and external should not exceed your CPUs
