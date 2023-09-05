@@ -26,6 +26,12 @@ galaxy_systemd_gunicorn_timeout: 300
 galaxy_systemd_gunicorn_socket_name: gunicorn
 galaxy_systemd_gunicorn_listen_path: "{{ galaxy_mutable_data_dir }}/{{ galaxy_systemd_gunicorn_socket_name }}"
 
+# The maximum number of requests a worker will process before restarting.
+galaxy_systemd_gunicorn_max_requests: 0
+
+# The maximum jitter to add to the max_requests setting.
+galaxy_systemd_gunicorn_max_requests_jitter: 0
+
 # Any extra env vars you wish to set for Gunicorn
 galaxy_systemd_gunicorn_env: ""
 # uncomment this if yuo want to disable the preload option
