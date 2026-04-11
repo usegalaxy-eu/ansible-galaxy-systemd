@@ -1,20 +1,21 @@
+---
 galaxy_systemd_handler_prefix: "handler_{{ ansible_hostname.split('.')[0] | lower }}"
 galaxy_systemd_handlers: 12
 galaxy_systemd_workflow_schedulers: 0
 galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{ ansible_hostname.split('.')[0] | lower }}"
 
-# Maximum memory limits (in GB) are set for every process in their systemd unit file, and applied through cgroups.
-galaxy_systemd_memory_limit_gunicorn: 16
+# Systemd memory controls (in GB) are applied per unit. MemoryMax is the hard cap, MemoryHigh is the soft limit.
+galaxy_systemd_memory_max_gunicorn: 16
 galaxy_systemd_memory_high_gunicorn: null
-galaxy_systemd_memory_limit_celery_internal: 4
+galaxy_systemd_memory_max_celery_internal: 4
 galaxy_systemd_memory_high_celery_internal: null
-galaxy_systemd_memory_limit_celery_external: 4
+galaxy_systemd_memory_max_celery_external: 4
 galaxy_systemd_memory_high_celery_external: null
-galaxy_systemd_memory_limit_celery_beat: 2
+galaxy_systemd_memory_max_celery_beat: 2
 galaxy_systemd_memory_high_celery_beat: null
-galaxy_systemd_memory_limit_handler: 5
+galaxy_systemd_memory_max_handler: 5
 galaxy_systemd_memory_high_handler: null
-galaxy_systemd_memory_limit_workflow: 5
+galaxy_systemd_memory_max_workflow: 5
 galaxy_systemd_memory_high_workflow: null
 
 ### Gunicorn Options

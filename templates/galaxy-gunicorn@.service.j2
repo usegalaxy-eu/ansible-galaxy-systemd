@@ -15,7 +15,7 @@ ExecStart={{ galaxy_venv_dir }}/bin/gunicorn 'galaxy.webapps.galaxy.fast_factory
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin DOCUTILSCONFIG='' PYTHONPATH={{ galaxy_server_dir }}/lib:{{ galaxy_dynamic_job_rules_dir }} GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_gunicorn_env }}
-MemoryMax={{ galaxy_systemd_memory_limit_gunicorn }}G
+MemoryMax={{ galaxy_systemd_memory_max_gunicorn }}G
 {% if galaxy_systemd_memory_high_gunicorn is not none -%}
 MemoryHigh={{ galaxy_systemd_memory_high_gunicorn }}G
 {% endif %}
