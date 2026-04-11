@@ -1,9 +1,4 @@
 ---
 - name: daemon reload
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
-
-- name: galaxy mule start
-  systemd:
-    name: galaxy.service
-    state: started

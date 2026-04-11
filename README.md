@@ -12,16 +12,26 @@ Sets up Galaxy server processes responsible for:
 
 ## Major Changes
 
-### Version 2.1.0
-Introduces Celery service files with `watchdog` integration. The `watchmedo auto-restart` command watches specified directories (`galaxy/server, galaxy/config and galaxy/mutable-config`).  
-File patterns default to `*py,*.yml,*.yaml,*.xml`  
-Enable by setting `galaxy_systemd_watchdog: true`
-### :warning: Version 2.0.0
-The Celery workers are now split into two unit-files:
- - external queue, usually used with threads, but could be probably also used with the pools `gevent` or `evenlet` (not tested). Since `autoscale` is not supported for thread pools,  `concurrency` is used as before
- - internal queue, supports `prefork`, so it can `autoscale`
- - deafult concurrency was reduced, keep that in mind
- - max tasks per child were reduced to avoid jammed worker processes and tasks that are started but get never finished (for so far unknown reason)
+### Version 3.0.0
+
+- Removes the legacy web worker pool and old naming from the role.
+- Makes Gunicorn the only supported web mode.
+- Adds optional `MemoryHigh` and `MemoryMax` systemd memory controls.
+- Updates the role to current Ansible syntax with fully qualified builtin modules.
+
+### Watchdog
+
+Celery service files support `watchdog` integration. The `watchmedo auto-restart` command watches specified directories (`galaxy/server`, `galaxy/config`, and `galaxy/mutable-config`).
+File patterns default to `*.py,*.yml,*.yaml,*.xml`.
+Enable by setting `galaxy_systemd_watchdog: true`.
+
+### General Notes
+
+- Workflow schedulers use a scalable prefix via `galaxy_systemd_workflow_scheduler_prefix`.
+- Handlers use a scalable prefix via `galaxy_systemd_handler_prefix`; update job configuration if you rename existing handlers.
+- Gunicorn is scalable via `galaxy_systemd_gunicorns`.
+- The Gunicorn socket name should be provided without the `.sock` suffix.
+
 
 Be aware that there are now new variable names for these two different nit files and also for the beat file, to keep everything separated.
 
