@@ -8,7 +8,7 @@ UMask=022
 Type=simple
 User={{ galaxy_user.name }}
 Group={{ __galaxy_user_group }}
-WorkingDirectory={{ galaxy_root }}
+WorkingDirectory={{ galaxy_server_dir }}
 TimeoutStartSec=10
 ExecStart={{ galaxy_server_dir }}/lib/galaxy/sse_monitor/__main__.py
 Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }}
