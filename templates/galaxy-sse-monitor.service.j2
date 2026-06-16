@@ -11,7 +11,7 @@ Group={{ __galaxy_user_group }}
 WorkingDirectory={{ galaxy_server_dir }}
 TimeoutStartSec=10
 ExecStart={{ galaxy_venv_dir }}/bin/python {{ galaxy_server_dir }}/lib/galaxy/sse_monitor/__main__.py
-Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }}
+Environment=PYTHONPATH=lib/ GALAXY_CONFIG_FILE={{ galaxy_config_file }}
 MemoryMax={{ galaxy_systemd_memory_limit_sse_monitor }}G
 Restart=always
 
