@@ -16,7 +16,7 @@ galaxy_systemd_memory_limit_reports: 5
 galaxy_systemd_memory_limit_handler: 5
 galaxy_systemd_memory_limit_workflow: 5
 galaxy_systemd_memory_limit_zp: 8
-galaxy_systemd_memory_limit_monitor: 4
+galaxy_systemd_memory_limit_sse_monitor: 4
 
 ### Gunicorn Options
 galaxy_systemd_gunicorns: 2
