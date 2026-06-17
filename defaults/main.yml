@@ -16,6 +16,7 @@ galaxy_systemd_memory_limit_reports: 5
 galaxy_systemd_memory_limit_handler: 5
 galaxy_systemd_memory_limit_workflow: 5
 galaxy_systemd_memory_limit_zp: 8
+galaxy_systemd_memory_limit_sse_monitor: 4
 
 ### Gunicorn Options
 galaxy_systemd_gunicorns: 2
@@ -88,6 +89,10 @@ galaxy_systemd_celery_external_log_level: DEBUG
 galaxy_systemd_celery_env: ""
 galaxy_systemd_celery_beat_schedule_path: "{{ galaxy_mutable_data_dir }}/celery-beat-schedule"
 galaxy_systemd_celery_beat_log_level: DEBUG
+
+### SSE Monitor
+# Deploy the standalone SSE monitor process (recommended for production)
+galaxy_systemd_sse_monitor: false
 
 galaxy_systemd_watchdog: false
 galaxy_systemd_watchdog_patterns: "*.py,*.yml,*.yaml,*.xml"
