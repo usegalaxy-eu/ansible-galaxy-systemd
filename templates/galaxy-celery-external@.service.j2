@@ -19,7 +19,7 @@ ExecStart={% if galaxy_systemd_watchdog %}{{ galaxy_venv_dir }}/bin/watchmedo au
     --autoscale={{ galaxy_systemd_celery_external_autoscale }}{% endif %} \
     --max-tasks-per-child {{ galaxy_systemd_celery_external_max_tasks }} \
     -n worker-external%I.%H --loglevel {{ galaxy_systemd_celery_external_log_level }} \
-    --pool {{ galaxy_systemd_celery_external_pool }} --queues celery,galaxy.external
+    --queues celery,galaxy.external
 Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_celery_env }}
 MemoryMax={{ galaxy_systemd_memory_limit_celery_external }}G
 Restart=always
