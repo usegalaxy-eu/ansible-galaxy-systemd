@@ -7,6 +7,7 @@
     src: galaxy-celery-internal@.service.j2
     dest: /etc/systemd/system/galaxy-celery-internal@.service
   notify: daemon reload
+  register: celery_internal_template
 
 - name: Deploy Celery units for external queue
   template:
@@ -16,6 +17,7 @@
     src: galaxy-celery-external@.service.j2
     dest: /etc/systemd/system/galaxy-celery-external@.service
   notify: daemon reload
+  register: celery_external_template
 
 - name: Deploy Celery-beat units
   template:
@@ -25,23 +27,24 @@
     src: galaxy-celery-beat.service.j2
     dest: /etc/systemd/system/galaxy-celery-beat.service
   notify: daemon reload
+  register: celery_beat_template
 
-- name: Enable Celery internal
+- name: Enable and start/restart Celery internal
   systemd:
     name: "galaxy-celery-internal@{{ item }}.service"
     enabled: true
-    state: restarted
+    state: "{{ 'restarted' if celery_internal_template.changed else 'started' }}"
   loop: "{{ range(0, galaxy_systemd_celery_internal_workers) | list }}"
 
-- name: Enable Celery external
+- name: Enable and start/restart Celery external
   systemd:
     name: "galaxy-celery-external@{{ item }}.service"
     enabled: true
-    state: restarted
+    state: "{{ 'restarted' if celery_external_template.changed else 'started' }}"
   loop: "{{ range(0, galaxy_systemd_celery_external_workers) | list }}"
 
-- name: Enable Celery-beat
+- name: Enable and start/restart Celery-beat
   systemd:
     name: "galaxy-celery-beat.service"
     enabled: true
-    state: started
+    state: "{{ 'restarted' if celery_beat_template.changed else 'started' }}"
