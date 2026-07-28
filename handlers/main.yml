@@ -3,6 +3,18 @@
   systemd:
     daemon_reload: true
 
+- name: restart celery internal
+  systemd:
+    name: "galaxy-celery-internal@{{ item }}.service"
+    state: restarted
+  loop: "{{ range(0, galaxy_systemd_celery_internal_workers) | list }}"
+
+- name: restart celery external
+  systemd:
+    name: "galaxy-celery-external@{{ item }}.service"
+    state: restarted
+  loop: "{{ range(0, galaxy_systemd_celery_external_workers) | list }}"
+
 - name: galaxy mule start
   systemd:
     name: galaxy.service

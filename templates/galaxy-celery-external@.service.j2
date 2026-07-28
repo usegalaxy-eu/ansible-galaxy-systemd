@@ -15,8 +15,7 @@ ExecStart={% if galaxy_systemd_watchdog %}{{ galaxy_venv_dir }}/bin/watchmedo au
     --directory={{ galaxy_root }}/server --directory={{ galaxy_root }}/mutable-config \
     --recursive --pattern={{ galaxy_systemd_watchdog_patterns }} -- {% endif %}{{ galaxy_venv_dir }}/bin/celery \
     --app galaxy.celery worker{% if galaxy_systemd_celery_external_pool == 'threads' %} \
-    --concurrency {{ galaxy_systemd_celery_external_concurrency }}{% else %} \
-    --autoscale={{ galaxy_systemd_celery_external_autoscale }}{% endif %} \
+    --concurrency {{ galaxy_systemd_celery_external_concurrency }}{% endif %} \
     --max-tasks-per-child {{ galaxy_systemd_celery_external_max_tasks }} \
     -n worker-external%I.%H --loglevel {{ galaxy_systemd_celery_external_log_level }} \
     --pool {{ galaxy_systemd_celery_external_pool }} --queues celery,galaxy.external
