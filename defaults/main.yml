@@ -88,6 +88,7 @@ galaxy_systemd_celery_external_log_level: DEBUG
 galaxy_systemd_celery_env: ""
 galaxy_systemd_celery_beat_schedule_path: "{{ galaxy_mutable_data_dir }}/celery-beat-schedule"
 galaxy_systemd_celery_beat_log_level: DEBUG
+galaxy_systemd_celery_restart_sec: 30
 
 ### SSE Monitor
 # Deploy the standalone SSE monitor process (recommended for production)

@@ -23,6 +23,8 @@ Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{
 MemoryMax={{ galaxy_systemd_memory_limit_celery_external }}G
 Restart=always
 
+RestartSec={{ galaxy_systemd_celery_restart_sec }}
+
 MemoryAccounting=yes
 CPUAccounting=yes
 BlockIOAccounting=yes
