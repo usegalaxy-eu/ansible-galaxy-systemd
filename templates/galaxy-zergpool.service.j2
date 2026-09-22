@@ -13,9 +13,6 @@ TimeoutStartSec=10
 ExecStart={{ galaxy_venv_dir }}/bin/uwsgi --master --zerg-pool {{ galaxy_zergpool_listen_path }}:{{ galaxy_zergpool_listen_addr }}
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 MemoryMax={{ galaxy_systemd_memory_limit_zp }}G
-{% if galaxy_systemd_limit_nofile is defined %}
-LimitNOFILE={{ galaxy_systemd_limit_nofile }}
-{% endif %}
 Restart=always
 
 MemoryAccounting=yes
