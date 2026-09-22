@@ -21,6 +21,9 @@ ExecStart={% if galaxy_systemd_watchdog %}{{ galaxy_venv_dir }}/bin/watchmedo au
     --pool {{ galaxy_systemd_celery_internal_pool }} --queues celery,galaxy.internal
 Environment=PYTHONPATH=server/lib GALAXY_CONFIG_FILE={{ galaxy_config_file }} {{ galaxy_systemd_celery_env }}
 MemoryMax={{ galaxy_systemd_memory_limit_celery_internal }}G
+{% if galaxy_systemd_limit_nofile is defined %}
+LimitNOFILE={{ galaxy_systemd_limit_nofile }}
+{% endif %}
 Restart=always
 RestartSec={{ galaxy_systemd_celery_restart_sec }}
 

@@ -14,6 +14,9 @@ ExecStart={{ galaxy_venv_dir }}/bin/uwsgi {{ '--yaml' if galaxy_systemd_zergling
 
 Environment=HOME={{ galaxy_root }} VIRTUAL_ENV={{ galaxy_venv_dir }} PATH={{ galaxy_venv_dir }}/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin DOCUTILSCONFIG='' PYTHONPATH={{ galaxy_dynamic_job_rules_dir }} {{ galaxy_systemd_zergling_env }}
 MemoryMax={{ galaxy_systemd_memory_limit }}G
+{% if galaxy_systemd_limit_nofile is defined %}
+LimitNOFILE={{ galaxy_systemd_limit_nofile }}
+{% endif %}
 Restart=always
 
 MemoryAccounting=yes

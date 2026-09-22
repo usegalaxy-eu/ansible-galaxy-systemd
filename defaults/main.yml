@@ -18,6 +18,10 @@ galaxy_systemd_memory_limit_workflow: 5
 galaxy_systemd_memory_limit_zp: 8
 galaxy_systemd_memory_limit_sse_monitor: 4
 
+# Optional maximum number of open file descriptors for every managed systemd service.
+# Undefined by default, so the systemd default is used.
+galaxy_systemd_limit_nofile: "{{ undef() }}"
+
 ### Gunicorn Options
 galaxy_systemd_gunicorns: 2
 galaxy_systemd_gunicorn_workers: 2

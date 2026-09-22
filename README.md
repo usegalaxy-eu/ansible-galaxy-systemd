@@ -53,6 +53,14 @@ I don't feel like syncing the readme with my default file every time a variable 
 
 [defaults]: defaults/main.yml
 
+### Open file descriptor limit
+
+Set `galaxy_systemd_limit_nofile` to configure `LimitNOFILE` for every systemd service managed by this role. It is undefined by default, which leaves the systemd default unchanged.
+
+```yaml
+galaxy_systemd_limit_nofile: 65536
+```
+
 ## Dependencies
 
 - [galaxyproject.galaxy](https://github.com/galaxyproject/ansible-galaxy)
