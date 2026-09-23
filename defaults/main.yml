@@ -4,6 +4,7 @@ galaxy_systemd_mode: "zerg"
 
 galaxy_systemd_handler_prefix: "handler_{{ ansible_hostname.split('.')[0] | lower }}"
 galaxy_systemd_handlers: 12
+galaxy_systemd_handlers_limit_nofile: "{{ undef() }}"
 galaxy_systemd_workflow_schedulers: 0
 galaxy_systemd_workflow_scheduler_prefix: "workflow_scheduler_{{ ansible_hostname.split('.')[0] | lower }}"
 
@@ -22,6 +23,7 @@ galaxy_systemd_memory_limit_sse_monitor: 4
 galaxy_systemd_gunicorns: 2
 galaxy_systemd_gunicorn_workers: 2
 galaxy_systemd_gunicorn_timeout: 300
+galaxy_systemd_gunicorn_limit_nofile: "{{ undef() }}"
 # Where the socket for the zergling will be placed
 # the socket name needs to be followed by
 galaxy_systemd_gunicorn_socket_name: gunicorn
